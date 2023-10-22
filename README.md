@@ -1,4 +1,4 @@
-https://github.com/NikoKozeeev/kittygram_final/actions/workflows/main.yml/badge.svg
+![Deploy badge] https://github.com/NikoKozeeev/kittygram_final/actions/workflows/main.yml/badge.svg
 # Проект Kittygram - Яндекс.Практикум
 Социальная сеть для котоманов
 
