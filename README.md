@@ -1,27 +1,73 @@
-#  Как работать с репозиторием финального задания
+!Статус проекта(https://github.com/NikoKozeeev/kittygram_final/actions/workflows/main.yml/badge.svg)
+# Проект Kittygram - Яндекс.Практикум
+Социальная сеть для котоманов
 
-## Что нужно сделать
+## Ссылка на проект - Kittygram(https://infrasprintovna.sytes.net/)
+## Ссылка Репозиторий - NikoKozeev(https://github.com/NikoKozeev/kittygram_final)
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+### Особенности
+Создание аккаунта
+Загрузка собственных котиков на платформу с изображениями
+Просмотр чужих котиков
 
-## Как проверить работу с помощью автотестов
+### Локальное развертывание
+Чтобы развернуть приложение Kittygram локально, следуйте этим шагам:
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
+1. Клонируйте репозиторий на вашем локальном компьютере:
+
+   ```bash
+   git clone git@github.com:NikoKozeev/kittygram_final.git
+   cd kittygram
+   py manage.py migrate
+   python manage.py runserver
+
+2. Установите зависимости для бэкенда и запустите сервер разработки:
+   ```bash
+   cd ../frontend
+   npm install
+   npm start
+Откройте веб-браузер и перейдите по адресу http://127.0.0.1, чтобы взаимодействовать с локальной версией Kittygram.
+
+### Удаленное развертывание
+1. Подключитесь по SSH к удаленному серверу и перейдите в директорию проекта.
+2. Чтобы развернуть Kittygram на удаленном сервере, выполните следующие шаги:
+   Подготовьте окружение на удаленном сервере с необходимым программным обеспечением (Docker, Docker Compose и т.д.).
+3. Выполните команду fork, на своём аккаунте github из этого репозитория 
+## Ссылка Репозиторий - NikoKozeev(https://github.com/NikoKozeev/kittygram_final)
+4. Клонируйте репозиторий на удаленном сервере:
+   ```bash
+   git clone https://github.com/ваше-имя/kittygram_final.git
+   cd kittygram_final
+5. Выполните скачивание и развертывание продакшн версии:
+```bash
+   docker-compose -f docker-compose.production.yml pull
+   docker-compose -f docker-compose.production.yml up -d
+```
+установка миграций и сбор статики произойдет в автоматическом режиме.
+6. Для успешного развертывания проекта необходимо в главной директории создать файл .env, где будут указаны следуюшие параметры:
+- POSTGRES_DB
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- DB_NAME
+- DB_HOST
+- DB_PORT
+- DEBUG
+- SECRET_KEY
+- ALLOWED_HOSTS
+
+7. Для создания пользователя с правами администратора необходимо в терминале выполнить команду:
+```bash
+   cd backend
+   py manage.py createsuperuser
+```
+Или выполните команду:
+   ```bash
+git push
 ```
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+### Автор
+Проект Kittygram был создан NikoKozeev(https://github.com/NikoKozeev/kittygram_final) Николай Козеев
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
-
-## Чек-лист для проверки перед отправкой задания
-
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
-- Молитесь что бы ссх ключ был указан верно
+### Используемые технологии
+Проект использует ряд технологий, включая, но не ограничиваясь:
+Python, Django, PostgreSQL, Django Rest Framework, Djoser
